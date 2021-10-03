@@ -11,9 +11,10 @@
     <div class="header">
         <ul>
             <li><a href="<?php echo constant('URL');?>main">Inicio</a></li>
-            <li><a href="<?php echo constant('URL');?>nuevo">Nuevo</a></li>
-            <li><a href="<?php echo constant('URL');?>consulta">Consulta</a></li>
-            <li><a href="<?php echo constant('URL');?>ayuda">Ayuda</a></li>
+            <li><a href="<?php echo constant('URL');?>nuevoas">Nuevo Asociado</a></li>
+            <li><a href="<?php echo constant('URL');?>nuevoap">Nuevo Aporte</a></li>
+            <li><a href="<?php echo constant('URL');?>consultaas">Consulta Asociados</a></li>
+            <li><a href="<?php echo constant('URL');?>consultaap">Consulta Aportes</a></li>
         </ul>
     </div>
     
