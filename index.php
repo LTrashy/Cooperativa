@@ -1,10 +1,13 @@
 <?php
-    require 'libs/app.php';
-    require 'libs/controller.php';
-    require 'libs/database.php';
-    require 'libs/model.php';
-    require 'libs/views.php';
+    //phpinfo();
+    require_once 'libs/controller.php';
+    require_once 'libs/database.php';
+    require_once 'libs/model.php';
+    require_once 'libs/views.php';
+    require_once 'libs/app.php';
     
-    require 'config/config.php';
+    require_once 'config/config.php';
 
     $app = new App();
+
+    //require 'info.php';

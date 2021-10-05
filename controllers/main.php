@@ -9,5 +9,9 @@
             $this->view->render('main/index');
         }
 
+        function saludo(){
+            echo "<p>hola todos</p>";
+        }
+
         
     }
