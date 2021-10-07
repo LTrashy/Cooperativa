@@ -10,28 +10,30 @@
         }
 
         function registrarAsociado(){
-            $id_persona = $_POST['id_persona'];
+            $cedula = $_POST['cedula'];
             $nombre = $_POST['nombre'];
             $direccion = $_POST['direccion'];
             $telefono = $_POST['telefono'];
             $email = $_POST['email'];
             $birth_date = $_POST['birth_date'];
-            $id_asociado = $_POST['id_asociado'];
             $create_time = $_POST['create_time'];
             $total_aportes = $_POST['total_aportes'];
-
+            
             $mensaje ="";
-
-            if($this->model->insertPersona(['id_persona' => $id_persona,
+            //var_dump($this);
+            //die();
+            $idPersona = $this->model->insertPersona(['cedula' => $cedula,
                                             'nombre' => $nombre,
                                             'direccion' => $direccion,
                                             'telefono' => $telefono,
                                             'email' => $email,
-                                            'birth_date' => $birth_date])
-               && $this->model->insertAsociado(['id_asociado' => $id_asociado,
-                                                'id_persona' => $id_persona,
-                                                'create_time' => $create_time,
-                                                'total_aportes' => $total_aportes])){
+                                            'birth_date' => $birth_date]);
+                                                       
+            $idAsociado = $this->model->insertAsociado(['id_persona' => $idPersona,
+                                                        'create_time' => $create_time,
+                                                        'total_aportes' => $total_aportes]);
+                                                                  
+            if($idPersona && $idAsociado){
 
                 $mensaje = "Nuevo Asociado creado con exito";                                                    
 

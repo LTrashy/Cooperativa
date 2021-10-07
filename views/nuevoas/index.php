@@ -14,7 +14,7 @@
         <form action="<?php echo constant('URL');?>nuevoas/registrarAsociado" method="post" class="center">
             <p>
                 <label for="id">Identificacion</label><br>
-                <input type="number" max="11" name="id_persona" require>
+                <input type="number"  name="cedula" require>
             </p>
             <p>
                 <label for="nombre">Nombre completo</label><br>
@@ -26,7 +26,7 @@
             </p>
             <p>
                 <label for="telefono">Telefono</label><br>
-                <input type="number" max="10" name="telefono" require>
+                <input type="number" name="telefono" require>
             </p>
             <p>
                 <label for="email">Correo Electronico</label><br>
@@ -37,12 +37,10 @@
                 <input type="date" name="birth_date" require>
             </p>
             <p>
-                <label for="id_asociado">Identificador del asociado</label><br>
-                <input type="text" name="id_asociado" require>
-            </p>
-            <p>
                 <label for="create_time">Fecha de ingreso del asociado</label><br>
-                <input type="datetime" name="create_time" value="<?php echo date('Y-m-d\TH-i');?>" require disabled>
+                <label for="create_time"><?php echo date('Y-m-d H:i:s');?></label><br>
+                <input type="text" name="create_time" value="<?php echo date('Y-m-d H:i:s');?>" require readonly>
+              
             </p>
             <p>
                 <label for="total_aportes">Total de aportes</label><br>

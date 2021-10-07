@@ -1,9 +1,10 @@
 <?php
-    //require_once 'controllers/errores.php';
+    require_once 'controllers/errores.php';
 
     class App{
 
         function __construct(){
+            //var_dump($_GET['url']);
             $url = isset($_GET['url']) ? $_GET['url'] : NULL;
             $url = rtrim($url,'/');
             $url = explode('/',$url);
@@ -40,6 +41,7 @@
                     $controller->render();
                 }
             }else{
+                //require_once 'controllers/errores.php';
                 $controller = new Errores();
             }
         }
