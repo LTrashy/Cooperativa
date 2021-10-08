@@ -6,6 +6,15 @@
             
         }
 
+        public function getByCedula($data){
+            $query = $this->db->connect()->prepare('SELECT asociados.id FROM personas INNER JOIN asociados ON personas.id = asociados.id_persona AND personas.cedula = :cedula');
+            $query->execute(['cedula' => $data]);
+            while($row = $query->fetch()){
+                $id_asociado = $row['id'];
+            }
+            return $id_asociado;
+        }
+
         public function get(){
             $items =[];
 

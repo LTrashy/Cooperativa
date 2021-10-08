@@ -38,7 +38,7 @@
             </p>
             <p>
                 <label for="create_time">Fecha de ingreso del asociado</label><br>
-                <label for="create_time"><?php echo date('Y-m-d H:i:s');?></label><br>
+                <!--<label for="create_time"><?php echo date('Y-m-d H:i:s');?></label><br>-->
                 <input type="text" name="create_time" value="<?php echo date('Y-m-d H:i:s');?>" require readonly>
               
             </p>

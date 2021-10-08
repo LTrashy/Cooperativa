@@ -3,7 +3,7 @@
         public function __construct(){
             parent::__construct();
         }
-
+        
         public function insertPersona($data){
             $coneccion = $this->db->connect();
             $query = $coneccion->prepare('INSERT INTO personas (cedula,nombre,direccion,telefono,email,birth_date)
