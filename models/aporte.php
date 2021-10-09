@@ -1,6 +1,6 @@
 <?php
     class Aporte{
-        public $id;
+        public $id_aporte;
         public $id_asociado;
         public $valor_aporte;
         public $create_time_apo;

@@ -20,6 +20,8 @@
                     <th>Asociado #</th>
                     <th>Total de aportes</th>
                     <th>Fecha en que se unio</th>
+                    <th>A</th>
+                    <th>D</th>
                 </tr>
             </thead>
 
@@ -37,7 +39,7 @@
                     <td><?php echo $asociado->id_asociado; ?></td>
                     <td><?php echo $asociado->total_aportes; ?></td>
                     <td><?php echo $asociado->create_time; ?></td>
-                    <td><a href="<?php echo constant('URL') . 'consultaas/verAsociado/' . $asociado->id_persona; ?>">Actualizar</a></td>
+                    <td><a class="href" href="<?php echo constant('URL') . 'consultaas/verAsociado/' . $asociado->id_persona; ?>">Actualizar</a></td>
                     <td><button class="bEliminar" data-matricula="<?php echo $asociado->id_persona; ?>">Eliminar</button></td> 
                 </tr>
         <?php } ?>
@@ -45,6 +47,6 @@
         </table>
     </div>
     <?php require 'views/footer.php'; ?>
-    <script src="<?php echo constant('URL'); ?>/public/js/main.js"></script>
+    <script src="<?php echo constant('URL'); ?>/public/js/delete.js"></script>
 </body>
 </html>

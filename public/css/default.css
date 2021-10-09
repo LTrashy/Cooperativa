@@ -38,18 +38,36 @@ body{
     margin: 0 auto;
 }
 
-.main form p input[type=submit]{
+.main form p input[type=submit],[type=button]{
     background-color: black;
     color: white;
     padding: 8px;
     border: none;
     width: 200px;
 }
-
+.main .table tr td .href {
+    background-color: black;
+    color:white;
+    padding: 2px;
+    width: 80px;
+    text-decoration: none;
+    
+}
 .main .table {
     background-color: rgba(99, 100, 212, 0.966);
     text-align: center;
-    border-style: solid;   
+    border-collapse: collapse;   
+}
+.main .table th, td{
+    padding: 10px;
+}
+.main .table thead{
+    background-color: darkslateblue;
+    border-bottom: solid 5px rgb(38, 31, 83);
+    color: white;
+}
+.main .table tr:nth-child(even){
+    background-color: rgba(143, 144, 226, 0.966);
 }
 
 div.center{
