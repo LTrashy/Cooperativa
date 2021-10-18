@@ -28,7 +28,7 @@
                                             'telefono' => $telefono,
                                             'email' => $email,
                                             'birth_date' => $birth_date]);
-                                                       
+            
             $idAsociado = $this->model->insertAsociado(['id_persona' => $idPersona,
                                                         'create_time' => $create_time,
                                                         'total_aportes' => $total_aportes]);
