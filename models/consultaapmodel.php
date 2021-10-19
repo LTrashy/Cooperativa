@@ -32,7 +32,7 @@
         public function getByIdAp($data){
             $items =[];
             try{
-                $query = $this->db->connect()->prepare('SELECT  aportes.id AS idap, aportes.create_time AS fechaap, asociados.id AS idas, asociados.create_time AS fechaas , asociados.*, aportes.*  FROM aportes INNER JOIN asociados ON asociados.id = aportes.id_asociado WHERE aportes.id_asociado = :id_asociado ' . (empty($data['field']) ? '' : 'ORDER BY ' . $data['field'] . ' ' . $data['sentido']));
+                $query = $this->db->connect()->prepare('SELECT  aportes.id AS idap, aportes.create_time AS fechaap,     asociados.id AS idas, asociados.create_time AS fechaas , asociados.*, aportes.*  FROM aportes INNER JOIN asociados ON asociados.id = aportes.id_asociado WHERE aportes.id_asociado = :id_asociado ' . (empty($data['field']) ? '' : 'ORDER BY ' . $data['field'] . ' ' . $data['sentido']));
                 $query->execute(['id_asociado' => $data['id_asociado']]);
                 
                 while($row = $query->fetch()){

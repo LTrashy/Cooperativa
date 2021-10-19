@@ -27,6 +27,7 @@ body{
 } */
 
 .footer{
+    width: 100%;
     background-color: darkslateblue;
     padding: 20px;
     text-align: center;

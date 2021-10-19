@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Aporte</title>
+    <title>Consulta Aporte</title>
 </head>
 <body>
     <?php require 'views/header.php'; ?>
@@ -28,7 +28,6 @@
                 <tr>
                     <th id="valor" class="bOrdenar">Valor del aporte</th>
                     <th id="fecha" class="bOrdenar">Fecha del aporte</th>
-                    
                 </tr>
             </thead>
 
@@ -39,7 +38,7 @@
     </div>
     <?php require 'views/footer.php'; ?>
 
-    <script src="<?php echo constant('URL'); ?>public/js/tabla.js"></script>
+    <script src="<?php echo constant('URL');?>public/js/tablaAp.js"></script>
     
 
 </body>

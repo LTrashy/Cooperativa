@@ -63,7 +63,7 @@
                     $aporte = new Aporte();
                     $aporte = $row;
             
-
+                    echo '<tr>';
                     //echo '<tr id="fila-'. $aporte->id_asociado . '">';
                     //echo '<td>'.$aporte->id_aporte.'</td>';
                     //echo '<td>'.$aporte->id_asociado.'</td>';

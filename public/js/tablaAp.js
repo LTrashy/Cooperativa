@@ -2,6 +2,7 @@ var data = {"id" : "", "field" :"", "sentido" : ""};
 document.getElementById("bVer").addEventListener("click",function(){
     cargarTodos();
 });
+
 var userSelection = document.getElementsByClassName('bOrdenar');
 
 for(let i = 0; i < userSelection.length; i++) {
