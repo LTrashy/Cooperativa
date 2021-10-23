@@ -1,5 +1,7 @@
     <?php
+    
         include_once 'generarpdf.php';
+        include_once 'models/pdf.php';
         class consultacuota extends Controller{
             function __construct(){
                 parent::__construct();
@@ -14,8 +16,14 @@
                     $cuotas = $this->model->getByIdCuotas($param[0]);
                     $this->view->cuotas = $cuotas;
 
-                    $genpdf = new generarpdf();
-                    $genpdf->verPDF($param[0]);
+                    // $genpdf = new generarpdf();
+                    
+                    
+                    // $genpdf->id_cr = $param[0];
+                    $pdf = new pdf();
+                    $pdf->id = $param[0];
+                    $this->view->pdf = $pdf;
+
 
                     $this->view->mensaje = "";
                     $this->view->render('consultacredito/cuota');

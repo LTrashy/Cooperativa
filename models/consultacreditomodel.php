@@ -4,6 +4,7 @@
         function __construct(){
             parent::__construct();
         }
+        
         public function getByIdCred($data){
             $items = [];
             try{
@@ -57,15 +58,17 @@
         }
 
         function getAllId($id_credito){
+            $item=new Asociado();
             try{
                 $query = $this->db->connect()->prepare(
-                                    'SELECT id_asociado FROM creditos WHERE id = :id'
+                                    'SELECT id_asociado FROM creditos INNER JOIN asociados ON asociados.id = creditos.id_asociado WHERE id = :id'
                                                     );
                 $query->execute(['id' => $id_credito]);                                                    
                 while($row = $query->fetch()){
-                    $id_asociado = $row['id_asociado'];
+                    $item = $row['id_asociado'];
                 }
-                return $id_asociado;
+                
+                return $item;
             }catch(PDOException $e){
                 return null;
             }

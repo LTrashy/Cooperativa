@@ -29,6 +29,7 @@
                 </thead>
                 <tbody id="tbody-cuotas">
                     <?php
+                        //var_dump($this->pdf);
                         include_once 'models/cuota.php';
                         foreach($this->cuotas as $row){
                             $cuota = new Cuota();
@@ -49,7 +50,7 @@
                 </tbody>
             </table>
             <p>
-                <a class="href" href="<?php echo constant('URL');?>generarpdf/mostrarpdf">Generar pdf</a>
+                <a class="href" href="<?php echo constant('URL').'generarpdf/verPDF/'.$this->pdf->id;?>">Generar pdf</a>
             </p>
         
         
