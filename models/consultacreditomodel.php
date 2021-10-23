@@ -61,7 +61,7 @@
             $item=new Asociado();
             try{
                 $query = $this->db->connect()->prepare(
-                                    'SELECT id_asociado FROM creditos INNER JOIN asociados ON asociados.id = creditos.id_asociado WHERE id = :id'
+                                    'SELECT id_asociado FROM creditos INNER JOIN asociados ON asociados.id = creditos.id_asociado WHERE creditos.id = :id'
                                                     );
                 $query->execute(['id' => $id_credito]);                                                    
                 while($row = $query->fetch()){

@@ -38,12 +38,12 @@
 
             
             $id_asociado = $modelcredito->getAllId($param[0]);
-
+            
             $asociado = new Asociado();
             $modelasociado = new consultaasModel();
             $asociado = $modelasociado->getById($id_asociado);
             $this->view->asociado = $asociado;
-            //var_dump($asociado);
+            
             $this->view->mensaje="";
             $this->view->render('generarpdf/index');
         }
