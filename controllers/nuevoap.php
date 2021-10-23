@@ -1,4 +1,5 @@
 <?php
+    //include_once 'models/nuevoapmodel.php';
     class Nuevoap extends Controller{
         function __construct(){
             parent:: __construct();
@@ -25,5 +26,13 @@
             }
             $this->view->mensaje = $mensaje;
             $this->render();
+        }
+        function registrarPrimerAporte($data){
+            $aportemodel = new nuevoapModel();
+            $aportemodel->insertarPrimerAporte([
+                                             'id_asociado' => $data['id_asociado'],
+                                             'aporte' => $data['aporte'],
+                                             'create_time' => $data['create_time']
+                                        ]);
         }
     }

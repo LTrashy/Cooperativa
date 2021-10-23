@@ -26,7 +26,7 @@
             </p>
             <p>
                 <label for="telefono">Telefono</label><br>
-                <input type="number" name="telefono" require>
+                <input type="text" name="telefono" require>
             </p>
             <p>
                 <label for="email">Correo Electronico</label><br>
@@ -34,7 +34,7 @@
             </p>
             <p>
                 <label for="birth_date">Fecha nacimiento</label><br>
-                <input type="date" name="birth_date" require>
+                <input type="date" name="birth_date" min="1960-01-01" max="2003-12-31" require>
             </p>
             <p>
                 <label for="create_time">Fecha de ingreso del asociado</label><br>

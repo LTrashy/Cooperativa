@@ -12,7 +12,7 @@
         <div><?php echo $this->mensaje; ?></div>
         <h1 class="center">Sección de consulta</h1>
 
-        <table width="100%" class="table" >
+        <table  class="table" >
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -34,13 +34,13 @@
                 $asociado = $row;
         ?>
                 <tr id="fila-<?php echo $asociado->id_persona; ?>">
-                    <td><?php echo $asociado->nombre; ?></td>
-                    <td><?php echo $asociado->cedula; ?></td>
-                    <td><?php echo $asociado->id_asociado; ?></td>
-                    <td><?php echo $asociado->total_aportes; ?></td>
-                    <td><?php echo $asociado->create_time; ?></td>
-                    <td><a class="href" href="<?php echo constant('URL') . 'consultaas/verAsociado/' . $asociado->id_persona; ?>">Actualizar</a></td>
-                    <td><button class="bEliminar" data-matricula="<?php echo $asociado->id_persona; ?>">Eliminar</button></td> 
+                    <td data-titulo="Nombre"><?php echo $asociado->nombre; ?></td>
+                    <td data-titulo="Cedula"><?php echo $asociado->cedula; ?></td>
+                    <td data-titulo="Asociado #"><?php echo $asociado->id_asociado; ?></td>
+                    <td data-titulo="Total Aportes"><?php echo $asociado->total_aportes; ?></td>
+                    <td data-titulo="Fecha ingreso"><?php echo $asociado->create_time; ?></td>
+                    <td data-link=""><a class="href" href="<?php echo constant('URL') . 'consultaas/verAsociado/' . $asociado->id_persona; ?>">Actualizar</a></td>
+                    <td data-link=""><button class="bEliminar" data-id="<?php echo $asociado->id_persona; ?>">Eliminar</button></td> 
                 </tr>
         <?php } ?>
             </tbody>

@@ -67,8 +67,8 @@
                     //echo '<tr id="fila-'. $aporte->id_asociado . '">';
                     //echo '<td>'.$aporte->id_aporte.'</td>';
                     //echo '<td>'.$aporte->id_asociado.'</td>';
-                    echo '<td>'.$aporte->valor_aporte.'</td>';
-                    echo '<td>'.$aporte->create_time_apo.'</td>';
+                    echo '<td data-titulo="Valor del Aporte">'.$aporte->valor_aporte.'</td>';
+                    echo '<td data-titulo="Fecha del aporte">'.$aporte->create_time_apo.'</td>';
                     echo '</tr>';
                     } 
             }

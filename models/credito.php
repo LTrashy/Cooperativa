@@ -10,4 +10,5 @@
         public $fecha_credito;
         public $fecha_desembolso;
         public $saldo;
+        public $valor_cuota;
     }

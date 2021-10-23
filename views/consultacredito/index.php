@@ -25,15 +25,15 @@
         <table width="100%" class="table">
             <thead>
                 <tr>
-                    <th class="bOrdenar">ID</th>
-                    <th class="bOrdenar">Dia de pago</th>
-                    <th class="bOrdenar">Valor del Credito</th>
-                    <th class="bOrdenar">Numero de cuotas</th>
-                    <th class="bOrdenar">Tasa de interes</th>
-                    <th class="bOrdenar">Tasa de mora</th>
-                    <th class="bOrdenar">Fecha del credito</th>
-                    <th class="bOrdenar">Fecha desembolso</th>
-                    <th class="bOrdenar">Saldo</th>
+                    <th>!</th>
+                    <th>Dia de pago</th>
+                    <th>Valor del Credito</th>
+                    <th>Numero de cuotas</th>
+                    <th>Tasa de interes</th>
+                    <th>Tasa de mora</th>
+                    <th>Fecha del credito</th>
+                    <th>Fecha desembolso</th>
+                    <th>Saldo</th>
                 </tr>
             </thead>
             <tbody id="tbody-creditos">
@@ -42,6 +42,7 @@
         </table>
     </div>
     <?php require 'views/footer.php'?>
+    
     <script src="<?php echo constant('URL');?>public/js/tablaCr.js"></script>
 </body>
 </html>

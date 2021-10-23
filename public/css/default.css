@@ -42,25 +42,27 @@ body{
 }
 
 
-.main form p input[type=submit],[type=button]{
+.main form p input[type=submit], [type=button]{
     background-color: black;
     color: white;
     padding: 8px;
     border: none;
     width: 200px;
 }
-.main .table tr td .href {
+.main .table tr td .href, button{
     background-color: black;
     color:white;
     padding: 2px;
-    width: 80px;
+    width: 40px;
     text-decoration: none;
     
 }
 .main .table {
     background-color: rgba(99, 100, 212, 0.966);
     text-align: center;
-    border-collapse: collapse;   
+    /*border-collapse: collapse;   */
+    width: 100%;
+    padding: 1em 2em;
 }
 .main .table th, td{
     padding: 10px;
@@ -94,4 +96,35 @@ div.center{
 
 .error{
     color: rgba(99, 100, 212, 0.966);
+}
+
+
+@media (max-width:1024px){
+    table{
+        width: 100%;
+        font-size: .9em;
+    }
+    table tr{
+        display:flex;
+        flex-direction: column;
+        border: 5px outset rgb(26, 167, 132);
+        padding: 1em;
+        margin-bottom: 1em; 
+        text-align: left;
+    }
+    table td[data-titulo]{
+        display: flex;
+        
+    }
+    table td[data-titulo]::before{
+        content: attr( data-titulo );
+        width: 100px;
+        color: white;
+    }
+    table td[data-link]{
+        display: none;
+    }
+    table thead{
+        display: none;
+    }
 }

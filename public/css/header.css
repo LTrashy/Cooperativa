@@ -39,13 +39,13 @@
 }
 .submenu .menu__link{
     background: black;
-    
+    width: 100%;
     padding-left: 50px;
 }
 .mostrar{
     margin-left: 0;
     
-    height: auto;
+    height: 100%;
 }
 /* .desplegar{
     height: auto;

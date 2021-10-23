@@ -9,26 +9,30 @@
             $coneccion = $this->db->connect();
 
             $query = $coneccion->prepare('INSERT INTO creditos (
-                                                                id_asociado,valor_credito,                    nro_cuotas,tasa_interes,
+                                                                id_asociado,dia_pago,valor_credito,
+                                                                nro_cuotas,tasa_interes,
                                                                 tasa_mora,fecha_credito,
-                                                                fecha_desembolso
+                                                                fecha_desembolso,saldo,valor_cuota
                                                                 )
                                         VALUES (
-                                                :id_asociado,:valor_credito,
+                                                :id_asociado,:dia_pago,:valor_credito,
                                                 :nro_cuotas,:tasa_interes,
                                                 :tasa_mora,:fecha_credito,
-                                                :fecha_desembolso
+                                                :fecha_desembolso,:saldo,:valor_cuota
                                                 )
                                         ');
             try{
                 $query->execute([
                     'id_asociado' => $data['id_asociado'],
+                    'dia_pago' => $data['dia_pago'],
                     'valor_credito' => $data['valor_credito'],                
                     'nro_cuotas' => $data['nro_cuotas'],                
                     'tasa_interes' => $data['tasa_interes'],                
                     'tasa_mora' => $data['tasa_mora'],                
                     'fecha_credito' => $data['fecha_credito'],                
-                    'fecha_desembolso' => $data['fecha_desembolso']          
+                    'fecha_desembolso' => $data['fecha_desembolso'],
+                    'saldo' => $data['saldo'],
+                    'valor_cuota' => $data['valor_cuota']          
                 ]);
                 $id_credito = $coneccion->lastInsertId();
                 return $id_credito;

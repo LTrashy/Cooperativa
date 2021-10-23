@@ -1,4 +1,5 @@
 <?php
+    include_once 'nuevoap.php';
     class Nuevoas extends Controller{
         function __construct(){
             parent::__construct();
@@ -34,7 +35,14 @@
                                                         'total_aportes' => $total_aportes]);
                                                                   
             if($idPersona && $idAsociado){
-
+                if($total_aportes > 0){
+                    $aporte = new nuevoap();
+                    $aporte->registrarPrimerAporte([
+                            'id_asociado' => $idAsociado,
+                            'aporte' => $total_aportes,
+                            'create_time' => $create_time
+                    ]);
+                }
                 $mensaje = "Nuevo Asociado creado con exito";                                                    
 
             }else{

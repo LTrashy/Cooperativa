@@ -21,9 +21,51 @@
                     $item->fecha_credito = $row['fecha_credito'];
                     $item->fecha_desembolso = $row['fecha_desembolso'];
                     $item->saldo = $row['saldo'];
+                    $item->valor_cuota = $row['valor_cuota'];
                     array_push($items,$item);
                 }
                 return $items;
+            }catch(PDOException $e){
+                return null;
+            }
+        }
+
+        public function getById($data){
+            $item = new Credito();
+            try{
+                $query = $this->db->connect()->prepare
+                                                    ('SELECT * FROM creditos WHERE id = :id');
+                $query->execute(['id' => $data]);
+                while($row = $query->fetch()){
+                    $item->id_credito = $row['id'];
+                    $item->id_asociado = $row['id_asociado'];
+                    $item->dia_pago = $row['dia_pago'];
+                    $item->valor_credito = $row['valor_credito'];
+                    $item->nro_cuotas = $row['nro_cuotas'];
+                    $item->tasa_interes = $row['tasa_interes'];
+                    $item->tasa_mora = $row['tasa_mora'];
+                    $item->fecha_credito = $row['fecha_credito'];
+                    $item->fecha_desembolso = $row['fecha_desembolso'];
+                    $item->saldo = $row['saldo'];
+                    $item->valor_cuota = $row['valor_cuota'];
+                }       
+                return $item;                                             
+            }catch(PDOException $e){
+                return null;
+            }
+
+        }
+
+        function getAllId($id_credito){
+            try{
+                $query = $this->db->connect()->prepare(
+                                    'SELECT id_asociado FROM creditos WHERE id = :id'
+                                                    );
+                $query->execute(['id' => $id_credito]);                                                    
+                while($row = $query->fetch()){
+                    $id_asociado = $row['id_asociado'];
+                }
+                return $id_asociado;
             }catch(PDOException $e){
                 return null;
             }

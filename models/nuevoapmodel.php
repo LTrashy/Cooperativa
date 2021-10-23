@@ -4,7 +4,24 @@
         public function __construct(){
             parent::__construct();
         }
+        public function insertarPrimerAporte($data){
+            $coneccion = $this->db->connect();
+            $query = $coneccion->prepare('INSERT INTO aportes (id_asociado,valor_aporte,create_time) VALUES
+                                            (:id_asociado,:valor_aporte,:create_time)');
 
+            try{
+                $query->execute([
+                    'id_asociado' => $data['id_asociado'],
+                    'valor_aporte' => $data['aporte'],
+                    'create_time' => $data['create_time']
+                ]);
+                $id_aporte =$coneccion->lastInsertId();
+                return $id_aporte;
+            }catch(PDOException $e){
+                
+                return false;
+            }                                               
+        }
         public function insertarAporte($data){
                         
             $coneccion = $this->db->connect();

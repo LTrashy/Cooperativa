@@ -92,7 +92,7 @@
 
                                             
         }
-        function delete($id){
+        function delete($id_persona){
             $query = $this->db->connect()->prepare('DELETE ');
         }
     }

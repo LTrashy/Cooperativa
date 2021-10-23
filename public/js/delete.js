@@ -1,16 +1,16 @@
-const items = document.querySelectorAll(".bEliminar");
+const botones = document.querySelectorAll(".bEliminar");
 
-items.forEach(item => {
-    item.addEventListener("click", function(){
-        const matricula = this.dataset.matricula;
-
+botones.forEach(boton => {
+    boton.addEventListener("click", function(){
+        const id_persona = this.dataset.id;
+        //console.log(id_persona);
         const confirm = window.confirm("Deseas eliminar el elemento?");
 
         if(confirm){
-            httpRequest("http://localhost/curso/43.%20MVC-02/consulta/eliminarAlumno/" + matricula, function(e){
+            httpRequest("consultaas/eliminarAsociado/" + id_persona, function(e){
                 console.log(this.responseText);
-                const tbody = document.querySelector("#tbody-alumnos");
-                const fila  = document.querySelector("#fila-" + matricula);
+                const tbody = document.querySelector("#tbody-asociados");
+                const fila  = document.querySelector("#fila-" + id_persona);
                 tbody.removeChild(fila);
             })
         }

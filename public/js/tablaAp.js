@@ -26,7 +26,7 @@ function cargarTodos(){
         }
     };
     //console.log(id);
-    xmlhttp.open("GET", "http://192.168.0.6/consultaap/verAporte/"+ JSON.stringify(data) , true);
+    xmlhttp.open("GET", "consultaap/verAporte/"+ JSON.stringify(data) , true);
     xmlhttp.send();
 }
 
