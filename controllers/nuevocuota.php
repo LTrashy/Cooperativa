@@ -44,11 +44,13 @@
                                                 'fecha_pago' => $fecha_pago,
                                                 'saldo_cuota' => $saldo_cuota,
                                                 'num_cuota' => $num_cuota
-                ]);
 
+                                            ]);
+                //var_dump($id_cuota);
                 
-            
+                
             }
+            //die();
             
         }
     }

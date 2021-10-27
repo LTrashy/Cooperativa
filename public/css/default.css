@@ -49,13 +49,17 @@ body{
     border: none;
     width: 200px;
 }
-.main .table tr td .href, button{
+.href, button{
     background-color: black;
     color:white;
     padding: 2px;
     width: 40px;
     text-decoration: none;
     
+    
+}
+a.href{
+    text-align: center;
 }
 .main .table {
     background-color: rgba(99, 100, 212, 0.966);

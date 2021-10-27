@@ -49,8 +49,8 @@
                          ?>  
                 </tbody>
             </table>
-            <p>
-                <a class="href" href="<?php echo constant('URL').'generarpdf/verPDF/'.$this->pdf->id;?>">Generar pdf</a>
+            <p class="center">
+                <br><a class="href" href="<?php echo constant('URL').'generarpdf/verPDF/'.$this->pdf->id;?>">Generar PDF</a>
             </p>
         
         
