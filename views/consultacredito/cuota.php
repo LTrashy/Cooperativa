@@ -43,10 +43,9 @@
                             <td data-titulo="Saldo de la cuota"><?php echo $cuota->saldo_cuota;?></td>
                             <td data-titulo="Fecha del pago"><?php echo $cuota->fecha_pago;?></td>
                             <td data-titulo="Interes por mora"><?php echo $cuota->interes_mora;?></td>
-                            <td class="center"><a class="href" href="#">Pagar Cuota</a></td>
+                            <td class="center"><a class="href" href="<?php echo constant('URL').'consultacuota/verCuota/'.$cuota->id_cuota;?>">Pagar Cuota</a></td>
                         </tr>
-                    <?php }
-                         ?>  
+                    <?php } ?>  
                 </tbody>
             </table>
             <p class="center">

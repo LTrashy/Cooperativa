@@ -1,12 +1,11 @@
 <?php
     include_once 'models/consultacreditomodel.php';
-    include_once 'models/nuevocuotamodel.php';
     class nuevocuota extends Controller{
         function __construct(){
             parent::__construct();
             $this->view->mensaje ="";
         }
-
+        
         function render(){
             $this->view->render('consultacredito/cuota');
         }
@@ -24,6 +23,7 @@
             $fechaC = $credito->fecha_desembolso;
             
             
+            include_once 'models/nuevocuotamodel.php';
             for($i=1;$i<$nro_cuotas+1;$i++){
                 $cuotamodel = new nuevocuotamodel();
                 $interes_corriente = $saldo*$credito->tasa_interes/100;
