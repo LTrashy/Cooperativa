@@ -11,7 +11,7 @@
     <div class="main">
         <h1 class="center">Bienvenido al sitio</h1>
         <p class="center">
-            <img src="/public/acces/images/ardilla.gif" class="center" alt="" width="250px" height="250px">
+            <img src="/public/acces/images/icon.png" class="center" alt="" width="250px" height="250px">
         </p>
     </div>
     <?php require 'views/footer.php'; ?>

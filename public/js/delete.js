@@ -12,6 +12,7 @@ botones.forEach(boton => {
                 const tbody = document.querySelector("#tbody-asociados");
                 const fila  = document.querySelector("#fila-" + id_persona);
                 tbody.removeChild(fila);
+                
             })
         }
     });

@@ -62,13 +62,14 @@
 
         function eliminarAsociado($param = null){
             $id_persona = $param[0];
-            
+
             if($this->model->delete($id_persona)){
                 $mensaje = "Asociado eliminado con exito";
             }else{
                 $mensaje = "Asociado no se pudo eliminar";
             }
-            echo $mensaje;
+            $this->view->mensaje = $mensaje;
+            
         }
 
         

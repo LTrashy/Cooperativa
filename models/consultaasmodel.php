@@ -93,6 +93,12 @@
                                             
         }
         function delete($id_persona){
-            $query = $this->db->connect()->prepare('DELETE ');
+            $query = $this->db->connect()->prepare('DELETE FROM personas WHERE id=:id');
+            try{
+                $query->execute(['id' => $id_persona]);
+                return true;
+            }catch(PDOException $e){
+                return false;
+            }
         }
     }
