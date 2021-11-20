@@ -12,10 +12,11 @@
             //var_dump($url);
 
             if(empty($url[0])){
-                $archivoController = 'controllers/main.php';
+                error_log('APP::construct-> no hay controlador especificado');
+                $archivoController = 'controllers/login.php';
                 require_once $archivoController;
-                $controller = new Main();
-                $controller->loadModel('index');
+                $controller = new Login();
+                $controller->loadModel('login');
                 $controller->render();
                 return false;
             }
