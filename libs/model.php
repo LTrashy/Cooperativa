@@ -1,4 +1,5 @@
 <?php
+    include_once 'libs/IModel.php';
     class Model{
         function __construct(){
             $this->db = new Database();  

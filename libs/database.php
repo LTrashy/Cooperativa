@@ -11,7 +11,7 @@
            $this->db= constant('DB');
            $this->user= constant('USER');
            $this->password= constant('PASSWORD');
-           $this->charset= constant('charset');
+           $this->charset= constant('CHARSET');
 
         }
 

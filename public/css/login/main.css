@@ -147,7 +147,7 @@ iframe {
 
 .txt3 {
   font-family: Ubuntu-Bold;
-  font-size: 15px;
+  font-size: 20px;
   color: darkslateblue;
   line-height: 1.4;
   text-transform: uppercase;
@@ -211,7 +211,7 @@ iframe {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #000000;
+  background-color: darkslateblue;
   padding-top: 50px;
   padding-bottom: 39px;
 }
@@ -297,7 +297,7 @@ iframe {
   padding: 0 20px;
   width: 100%;
   height: 50px;
-  background-color: #000000;
+  background-color: darkslateblue;
   border-radius: 25px;
 
   font-family: Ubuntu-Bold;

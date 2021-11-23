@@ -8,7 +8,7 @@
     ini_set('log_errors', TRUE);
 
 
-    ini_set('error_log', '/var/www/curso/66/php-error.log');
+    ini_set('error_log', '/usr/share/nginx/cooperativa/php-error.log');
     error_log("hi!, /-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|-/-|");
     
     

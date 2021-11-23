@@ -1,7 +1,9 @@
 <?php
 
 require_once 'sessiones/session.php';
+require_once 'sessiones/sessiondb.php';
 require_once 'models/usermodel.php';
+require_once 'models/relacionroleusermodel.php';
 
 class SessionController extends Controller
 {
@@ -13,6 +15,7 @@ class SessionController extends Controller
     private $sites;
     
     private $user;
+    private $userRole;
     public function __construct()
     {
         parent::__construct();
@@ -23,28 +26,54 @@ class SessionController extends Controller
     {
         $this->session = new Session();
 
-        $json = $this->getJSONFileConfig();
+        $this->defaultSites = $this->getDefaultSites();
+        $this->sites = $this->getAllSites();
+        // var_dump($this->sites);
+        // die();
 
-        $this->sites = $json['sites'];
-        $this->defaultSites = $json['default-sites'];
+        //$json = $this->getJSONFileConfig();
+
+        //$this->sites = $json['sites'];
+        //$this->defaultSites = $json['default-sites'];
 
         $this->validateSession();
     }
 
-    private function getJSONFileConfig()
-    {
-        $string = file_get_contents('config/access.json');
-        $json = json_decode($string, true);
+    // private function getJSONFileConfig()
+    // {
+    //     $string = file_get_contents('config/access.json');
+    //     $json = json_decode($string, true);
 
-        return $json;
+    //     return $json;
+    // }
+
+    private function getDefaultSites()
+    {
+        $modelSession = new SessionDb();
+        $defaultSites = $modelSession->getDefaultsites();
+
+        return $defaultSites;
     }
+
+    private function getAllSites()
+    {
+        $modelSession = new SessionDb();
+        $sites = $modelSession->getAllSites();
+
+        return $sites;
+    }
+
 
     public function validateSession()
     {
         error_log('SESSIONCONTROLLER::validateSession');
-
+        // $role = $this->getUserSessionData();
+        //     var_dump($role);
+        //     die();
         if ($this->existsSession()){
-            $role = $this->getUserSessionData()->getRole();
+            $role = $this->getUserSessionData();
+            var_dump($role);
+            die();
             //validar si el acceso es publico
             if($this->isPublic()){
                 $this->redirectDefaultSiteByRole($role);
@@ -57,6 +86,8 @@ class SessionController extends Controller
                 }
             }
         } else {
+            // var_dump($this->isPublic());
+            // die();
             //no existe la sesion 
             if($this->isPublic()){
                 //lo deja entrar
@@ -87,19 +118,29 @@ class SessionController extends Controller
         $this->user->get($id);
 
         error_log('SESSIONCONTROLLER::getUSerSessionData -> ' . $this->user->getUsername());
-        return $this->user;
+
+        $this->userRole = new RelacionRoleUserModel();
+        $role = $this->userRole->getRoleById($id);
+        return $role;
     }
 
     function isPublic()
     {
         $currentURL = $this->getCurrentPage();
+        // var_dump($currentURL);
+        // die();
         $currentURL = preg_replace("/\?.*/", "", $currentURL);
 
+
         for($i = 0; $i < sizeof($this->sites); $i++){
-            if($currentURL == $this->sites[$i]['site'] && $this->sites[$i]['access'] == 'public'){
+            
+            if($currentURL == $this->sites[$i]['public']){
                 return true;
             }
+            // var_dump($this->sites[$i]['public']);
+            
         }
+        // die();
         return false;
     }
 
@@ -107,8 +148,10 @@ class SessionController extends Controller
     {
         $actualLink = trim("$_SERVER[REQUEST_URI]");
         $url = explode('/', $actualLink);
-        error_log('SESSIONCONTROLLER::getCurrentPAge -> ' . $url[2]);
-        return $url[2];
+        // var_dump($url);
+        // die();
+        error_log('SESSIONCONTROLLER::getCurrentPAge -> ' . $url[1]);
+        return $url[1];
     }
 
     private function redirectDefaultSiteByRole($role)
