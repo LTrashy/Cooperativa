@@ -1,6 +1,6 @@
 <?php
 
-require_once 'classes/session.php';
+require_once 'sessiones/session.php';
 require_once 'models/usermodel.php';
 
 class SessionController extends Controller
