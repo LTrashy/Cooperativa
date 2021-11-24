@@ -20,6 +20,8 @@
             foreach($params as $param){
                 if(!isset($_POST[$param])){
                     //TODO: ERROR LOG
+                    var_dump('hi');
+                    die();
                     return false;
                 }
             }

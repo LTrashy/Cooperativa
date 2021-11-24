@@ -7,34 +7,26 @@ class UserModel extends Model implements IModel{
         private $createTime;
         private $username;
         private $password;
-        //private $role;
-        //private $budget;
-        //private $photo;
-        //private $name;
+   
         
         public function __construct(){
             parent::__construct();
             $this->username = '';
             $this->password = '';
-            // $this->role = '';
-            // $this->budget = 0.0;
-            // $this->photo = '';
-            // $this->name = '';
+            $this->create_time = '';
         }
         
         public function save(){
             try{
                 $query = $this->prepare('INSERT INTO 
-                                users(username, password, role, budget, photo, name) 
-                                VALUES(:username, :password, :role, :budget, :photo, :name)');
+                                users(id_persona, create_time, username, password) 
+                                VALUES(:id_persona, :create_time, :username, :password)');
 
                 $query->execute([
+                    'id_persona' => $this->idPersona,
+                    'create_time' => $this->createTime,
                     'username' => $this->username,
                     'password' => $this->password,
-                    'role' => $this->role,
-                    'budget' => $this->budget,
-                    'photo' => $this->photo,
-                    'name' => $this->name,
                 ]);
 
                 return true;
@@ -50,10 +42,10 @@ class UserModel extends Model implements IModel{
                 while($p = $query->fetch(PDO::FETCH_ASSOC)){
                     $item = new userModel();
                     $item->setId($p['id']);
+                    $item->setIdPersona($p['id_persona']);
+                    $item->setCreateTime($p['create_time']);
                     $item->setUsername($p['username']);
                     $item->setPassword($p['password'], false);
-                    
-                    
                     array_push($items,$item);
                 }
                 return $items;
@@ -97,21 +89,17 @@ class UserModel extends Model implements IModel{
         public function update(){
             try{
                 $query = $this->prepare('UPDATE users SET 
+                                            id_persona = :id_persona,
+                                            create_time = :create_time,
                                             username = :username,
                                             password = :password,
-                                            role = :role,
-                                            budget = :budget,
-                                            photo = :photo,
-                                            name = :name
                                         WHERE id = :id');
                 $query->execute([
                     'id' => $this->id,
+                    'id_persona' => $this->idPersona,
+                    'create_time' => $this->createTime,
                     'username' => $this->username,
                     'password' => $this->password,
-                    'role' => $this->role,
-                    'budget' => $this->budget,
-                    'photo' => $this->photo,
-                    'name' => $this->name,
                 ]);
                 // var_dump($this->password);
                 // die();
@@ -124,12 +112,10 @@ class UserModel extends Model implements IModel{
 
         public function from($array){
             $this->id = $array['id'];
+            $this->idPersona = $array['id_persona'];
+            $this->createTime = $array['create_time'];
             $this->username = $array['username'];
             $this->password = $array['password'];
-            $this->role = $array['role'];
-            $this->budget = $array['budget'];
-            $this->photo = $array['photo'];
-            $this->name =$array['name'];
         }
         
         public function exists($username){

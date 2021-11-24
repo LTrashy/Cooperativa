@@ -33,8 +33,8 @@ class SessionDb extends Model{
             
             $items = [];
             while($p = $query->fetch(PDO::FETCH_ASSOC)){
-                $item = $this->from($p);
-                array_push($items,$item);
+                //$item = $this->from($p);
+                array_push($items,$p);
             }
             // var_dump($items);
             // die();

@@ -31,21 +31,11 @@ class SessionController extends Controller
         // var_dump($this->sites);
         // die();
 
-        //$json = $this->getJSONFileConfig();
-
-        //$this->sites = $json['sites'];
-        //$this->defaultSites = $json['default-sites'];
 
         $this->validateSession();
     }
 
-    // private function getJSONFileConfig()
-    // {
-    //     $string = file_get_contents('config/access.json');
-    //     $json = json_decode($string, true);
-
-    //     return $json;
-    // }
+    
 
     private function getDefaultSites()
     {
@@ -131,15 +121,18 @@ class SessionController extends Controller
         // die();
         $currentURL = preg_replace("/\?.*/", "", $currentURL);
 
-
+        // var_dump($this->sites);
+        // die();
         for($i = 0; $i < sizeof($this->sites); $i++){
             
-            if($currentURL == $this->sites[$i]['public']){
+            if($currentURL == $this->sites[$i]["name_permiso"] && $this->sites[$i]["name_role"] == "public"){
                 return true;
             }
             // var_dump($this->sites[$i]['public']);
             
         }
+        // die();
+        // var_dump($this->sites);
         // die();
         return false;
     }
@@ -158,8 +151,8 @@ class SessionController extends Controller
     {
         $url = '';
         for($i = 0; $i < sizeof($this->sites); $i++){
-            if($this->sites[$i]['role'] == $role){
-                $url = '/66/' . $this->sites[$i]['site'];
+            if($this->sites[$i]["name_role"] == $role){
+                $url = '/' . $this->sites[$i]['name_permiso'];
                 break;
             }
         }
@@ -172,7 +165,7 @@ class SessionController extends Controller
         $currentURL = preg_replace("/\?.*/", "", $currentURL);
 
         for($i = 0; $i < sizeof($this->sites); $i++){
-            if($currentURL == $this->sites[$i]['site'] && $this->sites[$i]['role'] == $role){
+            if($currentURL == $this->sites[$i]['name_permiso'] && $this->sites[$i]['name_role'] == $role){
                 return true;
             }
         }
