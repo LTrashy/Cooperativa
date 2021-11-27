@@ -15,7 +15,8 @@
                 $controller->render();
                 return false;
             }
-            
+            // var_dump($url[0]);
+            // die();
             $archivoController = 'controllers/' . $url[0] . '.php';
             
             if(file_exists($archivoController)){
@@ -26,8 +27,8 @@
                 
                 
                 if(isset($url[1])){
-                    var_dump('hi');
-                    die();
+                    // var_dump('hi');
+                    // die();
                     
                     if(method_exists($controller, $url[1])){
                         if(isset($url[2])){
@@ -43,8 +44,8 @@
                         }else{
                             //no teine parametros, se manda a llamar el parametro tal cual
                             error_log('APP::construct-> llama controlador');
-                            var_dump($url[1]);
-                            die();
+                            // var_dump($url[1]);
+                            // die();
                             $controller->{$url[1]}();
                         }
                     }else{

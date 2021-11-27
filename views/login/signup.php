@@ -10,23 +10,31 @@
     <?php require 'views/header.php'?>
     <p>
         <?php $this->showMessages();?>
+    </p>
         <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST">
+				<form action="<?= URL ?>signup/newUser" class="login100-form validate-form p-l-55 p-r-55 p-t-178" method="POST">
 					<span class="login100-form-title">
 						Registrarse
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-						<input class="input100" type="text" name="username" placeholder="Username" required autocomplete="off">
+						<input class="input100" type="text" name="username" placeholder="  Username" required autocomplete="off">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-16" data-validate="Please enter ID">
+						<input class="input100" type="text" name="cedula" placeholder="  Cedula"  autocomplete="off">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Please enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password" required autocomplete="off">
-						<span class="focus-input100"></span><br><br>
+						<input class="input100" type="password" name="password" placeholder="  Password" required autocomplete="off">
+						<span class="focus-input100"></span>
 					</div>
+
+					<br><br>
                     
 					<!-- <div class="text-right p-t-13 p-b-23">
 						<span class="txt1">
@@ -44,7 +52,7 @@
 						
 					</div>
 
-					<div class="flex-col-c p-t-170 p-b-40">
+					<div class="flex-col-c p-t-100 p-b-40">
 						<span class="txt1 p-b-9">
 							You have an account?
 						</span>
@@ -57,6 +65,5 @@
 			</div>
 		</div>
 	</div>
-    </p>
 </body>
 </html>

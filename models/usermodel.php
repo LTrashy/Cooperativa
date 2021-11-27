@@ -18,7 +18,8 @@ class UserModel extends Model implements IModel{
         
         public function save(){
             try{
-                $query = $this->prepare('INSERT INTO 
+                $connection = $this->db->connect();
+                $query = $connection->prepare('INSERT INTO 
                                 users(id_persona, create_time, username, password) 
                                 VALUES(:id_persona, :create_time, :username, :password)');
 
@@ -29,7 +30,8 @@ class UserModel extends Model implements IModel{
                     'password' => $this->password,
                 ]);
 
-                return true;
+                $this->setId($connection->lastInsertId());
+                return $this->getId();
             }catch(PDOException $e){
                 error_log('UserModel::save->PDOException ' .$e);
                 return false;
@@ -92,7 +94,7 @@ class UserModel extends Model implements IModel{
                                             id_persona = :id_persona,
                                             create_time = :create_time,
                                             username = :username,
-                                            password = :password,
+                                            password = :password
                                         WHERE id = :id');
                 $query->execute([
                     'id' => $this->id,

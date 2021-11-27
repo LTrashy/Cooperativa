@@ -8,7 +8,7 @@
             $url = 'models/'.$model.'model.php';
 
             if(file_exists($url)){
-                require $url;
+                require_once $url;
 
                 $modelName = $model.'Model';
                 $this->model = new $modelName();
@@ -20,8 +20,6 @@
             foreach($params as $param){
                 if(!isset($_POST[$param])){
                     //TODO: ERROR LOG
-                    var_dump('hi');
-                    die();
                     return false;
                 }
             }

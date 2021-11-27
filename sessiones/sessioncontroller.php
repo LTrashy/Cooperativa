@@ -26,7 +26,7 @@ class SessionController extends Controller
     {
         $this->session = new Session();
 
-        $this->defaultSites = $this->getDefaultSites();
+        //$this->defaultSites = $this->getDefaultSites();
         $this->sites = $this->getAllSites();
         // var_dump($this->sites);
         // die();
@@ -35,15 +35,7 @@ class SessionController extends Controller
         $this->validateSession();
     }
 
-    
 
-    private function getDefaultSites()
-    {
-        $modelSession = new SessionDb();
-        $defaultSites = $modelSession->getDefaultsites();
-
-        return $defaultSites;
-    }
 
     private function getAllSites()
     {
@@ -61,11 +53,13 @@ class SessionController extends Controller
         //     var_dump($role);
         //     die();
         if ($this->existsSession()){
-            $role = $this->getUserSessionData();
-            var_dump($role);
-            die();
+            $role = $this->getUserSessionData()['role']['name_role'];
+            // var_dump($role);
+            // die();
             //validar si el acceso es publico
             if($this->isPublic()){
+                // var_dump("a");
+                // die();
                 $this->redirectDefaultSiteByRole($role);
             }else{
                 if($this->isAuthorized($role)){
@@ -104,15 +98,21 @@ class SessionController extends Controller
     {
         $id = $this->session->getCurrentUser();
 
-        $this->user = new userModel();
+        $this->user = new UserModel();
         $this->user->get($id);
 
         error_log('SESSIONCONTROLLER::getUSerSessionData -> ' . $this->user->getUsername());
 
         $this->userRole = new RelacionRoleUserModel();
         $role = $this->userRole->getRoleById($id);
-        return $role;
+
+        return [
+            'role' => $role,
+            'user' => $this->user,
+        ];
     }
+    
+    
 
     function isPublic()
     {
@@ -121,9 +121,8 @@ class SessionController extends Controller
         // die();
         $currentURL = preg_replace("/\?.*/", "", $currentURL);
 
-        // var_dump($this->sites);
-        // die();
-        for($i = 0; $i < sizeof($this->sites); $i++){
+      
+        for($i = 0; $i < count($this->sites); $i++){
             
             if($currentURL == $this->sites[$i]["name_permiso"] && $this->sites[$i]["name_role"] == "public"){
                 return true;
@@ -151,11 +150,16 @@ class SessionController extends Controller
     {
         $url = '';
         for($i = 0; $i < sizeof($this->sites); $i++){
+            // var_dump($role);
+            // var_dump($this->sites[$i]["name_role"]);
             if($this->sites[$i]["name_role"] == $role){
                 $url = '/' . $this->sites[$i]['name_permiso'];
+                //var_dump($this->sites[$i]['name_permiso']);
                 break;
             }
         }
+        // var_dump($url);
+        // die();
         header('Location:'  . $url);
     }
 
@@ -163,29 +167,42 @@ class SessionController extends Controller
     {
         $currentURL = $this->getCurrentPage();
         $currentURL = preg_replace("/\?.*/", "", $currentURL);
-
+        // var_dump($role['name_role']);
+        // die();
         for($i = 0; $i < sizeof($this->sites); $i++){
+            //var_dump($this->sites[$i]['name_role']);
             if($currentURL == $this->sites[$i]['name_permiso'] && $this->sites[$i]['name_role'] == $role){
+                // var_dump("true");
+                // die();    
                 return true;
-            }
+                }
         }
+        // var_dump("false");
+        // die();
+
         return false;       
     }
 
     function initialize($user)
     {
+        // var_dump($user->getId());
+        // die();
         $this->session->setCurrentUser($user->getId());
-        $this->authorizeAccess($user->getRole());
+        $this->userRole = new RelacionRoleUserModel();
+        $role = $this->userRole->getRoleById($user->getId());
+        // var_dump($role['name_role']);
+        // die();
+        $this->authorizeAccess($role['name_role']);
     }
 
     function authorizeAccess($role)
     {
         switch($role){
             case 'user':
-                $this->redirect($this->defaultSites['user'], []);
+                $this->redirect('dashboard', []);
             break;
             case 'admin':
-                $this->redirect($this->defaultSites['admin'], []);
+                $this->redirect('admin', []);
             break;
                  
         }

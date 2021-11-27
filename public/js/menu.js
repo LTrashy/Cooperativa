@@ -1,5 +1,5 @@
 const btnMenu = document.querySelector("#btnMenu");
-const menu = document.querySelector("#menu");
+const menu = document.querySelector("#header");
 const alto = menu.scrollHeight;
 btnMenu.addEventListener("click",function(){
     menu.classList.toggle("mostrar");
@@ -9,7 +9,7 @@ btnMenu.addEventListener("click",function(){
 const subMenuBtn = document.querySelectorAll(".submenu-btn");
 for(let i=0; i<subMenuBtn.length; i++){
     subMenuBtn[i].addEventListener("click", function(){
-        if(window.innerWidth < 1024){
+        if(window.innerWidth < 800){
             const subMenu = this.nextElementSibling;
             const height = subMenu.scrollHeight;
             if(subMenu.classList.contains("desplegar")){

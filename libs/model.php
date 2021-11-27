@@ -14,5 +14,9 @@
         {
             return $this->db->connect()->prepare($query);
         }
+        function lastIn()
+        {
+            return $this->db->connect()->lastInsertId();
+        }
 
     }
