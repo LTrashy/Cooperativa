@@ -1,9 +1,9 @@
 :root{
     font-size: 14px;
-    --primary-color: rgb(38, 132, 214);
-    --hover-color: rgb(17, 80, 136);
-    --secondary-color: rgb(24, 92, 151);
-    --hover-menu: #eee;
+    --primary-color: rgb(126, 89, 214);
+    --hover-color: rgb(78, 17, 136);
+    --secondary-color: rgb(130, 24, 151);
+    --hover-menu: rgb(153, 195, 202);
 }
 *{
     padding: 0;
@@ -47,7 +47,7 @@ body{
     overflow: hidden;
     margin: 50px auto;
     background-color: white;
-    width: 900px;
+    width: auto;
     box-shadow: 0 0 30px rgba(0,0,0,0.2);
     box-sizing: border-box;
 }
@@ -215,13 +215,13 @@ h3{
     width: 100%;
 }
 
-.menu, #profile-container{
+.menu, .profile, .submenu{
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-#header{
+.menu, .profile, .submenu{
     background: #000;
     width: 100%;
     height: 0px;
@@ -234,28 +234,76 @@ h3{
     height: 100%;
 }
 
-/* .menu__link{
+.menu__link, .submenu-btn{
     display: block;
     padding: 20px;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.3em;
     text-decoration: none;
     background-color: black;
+    width: 100%;
+    /* padding-left: 50px; */
+    border-bottom: solid 1px blueviolet;
+}
+
+.name, .photo{
+    text-align: center;
+}
+
+/* .submenu{
+    height: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.submenu .menu__link{
+    display: block;
+    background: black;
     width: 100%;
     padding-left: 50px;
 } */
 
-@media(min-width:800px){
+@media(min-width:900px){
+
+    .container{
+        width: 900px;
+    }
     .nav-bar{
         display: none;
     }
 
     #header{
+        width: 100%;
+    }
+    .menu , .profile{
+        font-size: 17px;
+        background: black;
+        margin-left: 0;
+        height: auto;
+        display: inline-block;
+        width: auto;
+    }
+
+    .menu ul{
+        display: inline-block;
+    }
+
+    .menu__link, .submenu-btn{
+        width: auto;
+        font-size: 17px;
+    }
+
+    #submenu{
+
+    }
+    
+    
+    #header{
         font-size: 16px;
         background: black;
         margin-left: 0;
         height: auto;
-        display: inline block;
+        display: inline-block;
     }
     
     #header ul{

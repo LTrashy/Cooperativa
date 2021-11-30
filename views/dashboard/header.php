@@ -10,18 +10,18 @@
         <li><a class="menu__link" href="<?= constant('URL')?>logout">Logout</a></li>
     </ul>
 
-    <div id="profile-container">
-        <a class="submenu-btn" href="#">
+    <div class="profile" id="profile-container">
+        <a class="submenu-btn" href="<?= URL ?>user">
             <div class="name"><?= ($persona->getNombre() != '') ? $persona->getNombre() : $user->getUsername()?></div>
             <div class="photo">
                 <i class="material-icons">account_circle</i>
             </div>
         </a>
-        <div id="submenu">
+        <div class="submenu" id="submenu">
             <ul>
-                <li><a href="<?= constant('URL')?>user">Ver perfil</a></li>
-                <li class='divisor'></li>
-                <li><a href="<?= constant('URL')?>logout">Cerrar sesión</a></li>
+                <li><a class="menu__link"href="<?= constant('URL')?>user">Ver perfil</a></li>
+                <li  class='divisor'></li>
+                <li><a class="menu__link"href="<?= constant('URL')?>logout">Cerrar sesión</a></li>
             </ul>
         </div>
     </div>

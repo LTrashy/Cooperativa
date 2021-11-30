@@ -41,7 +41,7 @@
     display: block;
     margin: 0;
     padding: 15px 10px;
-    border-bottom: solid 1px rgb(243, 237, 237);
+    border-bottom: solid 1px rgb(191, 176, 209);
 }
 #user-container #side-menu ul li a:hover{
     background-color: var(--hover-menu);
@@ -72,4 +72,33 @@
     background-color: var(--primary-color) !important;
     color: white !important;
     text-decoration: none;
+}
+
+@media(max-width:610px){
+    #user-container #side-menu{
+        width: 100%;
+        height: auto;
+    }
+
+    #user-section-container{
+        display : block;
+    }
+
+    #password-user-container{
+        width: auto;
+    }
+
+    .section{
+        text-align: center;
+        width: auto;
+    }
+
+    #user-container #side-menu ul li a{
+        text-align: center;
+        font-size: 1.4em;
+    }
+
+    /* #user-container #side- */
+
+
 }
