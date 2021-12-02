@@ -1,6 +1,7 @@
 <?php
 include_once 'models/personamodel.php';
 include_once 'models/usermodel.php';
+include_once 'models/asociadomodel.php';
 include_once 'models/relacionroleusermodel.php';
 
 class Signup extends SessionController{
@@ -38,6 +39,8 @@ class Signup extends SessionController{
             $userModel->setPassword($password);
             $userModel->setCreateTime($createTime);
 
+            $asociadoModel = new AsociadoModel();
+
             $relacionRoleUser = new RelacionRoleUserModel();
 
             if($userModel->exists($username)){
@@ -45,20 +48,22 @@ class Signup extends SessionController{
                 $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER_EXISTS]); 
             }else if($personaModel->save()){
                 $userModel->setIdPersona($personaModel->getId());
-                if($userModel->save()){
+                $asociadoModel->setIdPersona($personaModel->getId());
+                
+                if($userModel->save() && $asociadoModel->save()){
                     $relacionRoleUser->setIdUser($userModel->getId());
                     $relacionRoleUser->save();
                     $this->redirect('', ['success' => Success::SUCCESS_SIGNUP_NEWUSER]); 
                 }else{
-                    $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER]); //TODO: ERROR
+                    $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER]); // ERROR
                 }
             }else{
-                $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER]); //TODO: ERROR
+                $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER]); // ERROR
             }
             //$idPersona = $personaModel->save();
 
         }else{
-            $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER]); //TODO: ERROR
+            $this->redirect('signup', ['errors' => Errors::ERROR_SIGNUP_NEWUSER]); // ERROR
         }
     }
 }

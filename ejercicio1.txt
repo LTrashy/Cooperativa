@@ -1,0 +1,35 @@
+<?php
+        ordenarEnteros([]);
+        
+        function ordenarEnteros($array = []){
+            $arraySalida=[];
+            
+            
+            for($i=0;$i<count($array);$i++){
+                $aux=0;
+                for($j=0; $j < count($array); $j++){
+                    $num = $array[$j];
+                    if($num > $aux){
+                        $aux=$num;
+                    }
+                                      
+                }
+                for($j=0; $j < count($array); $j++){
+                    if($aux == $array[$j]){
+                        $array[$j]=-1;
+                    }
+
+                }
+
+                              
+                $arraySalida[$i]=$aux;
+                
+            }
+            
+            var_dump($array);
+            var_dump($arraySalida);
+
+            
+        }
+    
+?>

@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= URL ?>public/css/login/util.css">
 	<link rel="stylesheet" type="text/css" href="<?= URL ?>public/css/login/main.css">
     <link rel="stylesheet" type="text/css" href="<?= URL ?>/public/css/login/header.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>/public/css/default.css">
     <div id="header">
         <ul>
             <li><a href="<?= URL ?>">Home</a></li>

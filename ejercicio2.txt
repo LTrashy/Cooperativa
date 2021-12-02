@@ -1,0 +1,98 @@
+<?php
+    class Empleado{
+        private $nombre;
+        private $sueldo;
+
+        function __construct()
+        {
+            $this->nombre = "";
+            $this->sueldo = 0;
+        }
+        
+
+
+        /**
+         * Get the value of nombre
+         */ 
+        public function getNombre()
+        {
+                return $this->nombre;
+        }
+
+        /**
+         * Set the value of nombre
+         *
+         * @return  self
+         */ 
+        public function setNombre($nombre)
+        {
+                $this->nombre = $nombre;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of sueldo
+         */ 
+        public function getSueldo()
+        {
+                return $this->sueldo;
+        }
+
+        /**
+         * Set the value of sueldo
+         *
+         * @return  self
+         */ 
+        public function setSueldo($sueldo)
+        {
+                $this->sueldo = $sueldo;
+
+                return $this;
+        }
+    }
+    $array=[];
+    $emp = new Empleado();
+    $emp->setNombre("ander");
+    $emp->setSueldo(80);
+    $emp2 = new Empleado();
+    $emp2->setNombre("ander");
+    $emp2->setSueldo(20);
+    $emp3 = new Empleado();
+    $emp3->setNombre("ander");
+    $emp3->setSueldo(50);
+    $emp4 = new Empleado();
+    $emp4->setNombre("ander");
+    $emp4->setSueldo(55);
+
+    array_push($array, $emp);
+    array_push($array, $emp2);
+    array_push($array, $emp3);
+    array_push($array, $emp4);
+
+    sueldoPromedio($array);
+
+    function sueldoPromedio($array=[]){
+        // var_dump($array);
+        $suma=0;
+        $arraySalida=[];
+        for($i=0;$i < count($array); $i++){
+            $suma += $array[$i]->getSueldo(); 
+        }
+        $media = $suma/count($array);
+        // var_dump($media);
+        $abajo = $media - $media*0.05;
+        // var_dump($abajo);
+        $arriba =$media + $media*0.1;
+        // var_dump($arriba);
+
+        for($i=0;$i < count($array); $i++){
+            // var_dump($array[$i]->getSueldo());
+            if($array[$i]->getSueldo() < $arriba && $array[$i]->getSueldo() > $abajo){
+                array_push($arraySalida, $array[$i]);
+            }
+        }
+
+        var_dump($arraySalida);
+    }
+?>
