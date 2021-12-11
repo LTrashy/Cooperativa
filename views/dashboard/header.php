@@ -6,7 +6,7 @@
 <div id="header">
     <ul class="menu" id="menu">
         <li><a class="menu__link" href="<?= constant('URL')?>dashboard">Home</a></li>
-        <li><a class="menu__link" href="<?= constant('URL')?>expenses">Aportes</a></li>
+        <li><a class="menu__link" href="<?= constant('URL')?>aporte">Aportes</a></li>
         <li><a class="menu__link" href="<?= constant('URL')?>logout">Logout</a></li>
     </ul>
 

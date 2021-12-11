@@ -1,0 +1,14 @@
+#aporte-header{
+    background-color: rgb(50, 36, 85);
+    padding: 10px 80px;
+}
+
+#aporte-info-container{
+    display: flex;
+    align-items: center;
+}
+
+#aporte-info h2{
+    color: white;
+    font-size: 40px;
+}
