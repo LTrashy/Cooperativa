@@ -45,13 +45,15 @@ class AsociadoModel extends Model implements IModel{
                 $item->setId($p['id']);
                 $item->setIdPersona($p['id_persona']);
                 $item->setCreateTime($p['create_time']);
-                $item->setTotalAportes($p['total_aportas']);
+                $item->setTotalAportes($p['total_aportes']);
 
                 array_push($items, $item);
             }
-
+            
             return $items;
         }catch(PDOException $e){
+            var_dump($e->getMessage());
+            die();
             return false;
         }
     }

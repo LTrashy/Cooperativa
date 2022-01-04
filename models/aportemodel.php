@@ -85,15 +85,13 @@ class AporteModel extends Model implements IModel{
     }
 
     public function getByOrder($data = null){
+        $items = [];
         try{
             // var_dump($data);
             // die();
-            $query = $this->prepare('SELECT * FROM aportes WHERE id_asociado = :id_asociado ORDER BY :field :sentido');
-            $query->execute([
-                'id_asociado' => $data['id_asociado'],
-                'field' => $data['field'],
-                'sentido' => $data['sentido'],
-            ]);
+            $query = $this->prepare('SELECT * FROM aportes WHERE id_asociado = :id_asociado ' . (empty($data['field']) ? '' : 'ORDER BY ' . $data['field'] . ' ' . $data['sentido']));
+            
+            $query->execute(['id_asociado' => $data['id_asociado']]);
 
             while($p = $query->fetch(PDO::FETCH_ASSOC)){
                 $item = new AporteModel();
@@ -103,7 +101,8 @@ class AporteModel extends Model implements IModel{
                 $item->setCreateTime($p['create_time']);
                 array_push($items, $item);
             }
-
+            // var_dump($items);
+            // die();
             return $items;
         }catch(PDOException $e){
             var_dump($e->getMessage());

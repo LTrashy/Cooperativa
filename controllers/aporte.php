@@ -5,6 +5,7 @@ include_once 'models/asociadomodel.php';
 class Aporte extends SessionController{
 
     private $user;
+    private $role;
     private $persona;
     private $asociado;
     private $aporte;
@@ -13,6 +14,7 @@ class Aporte extends SessionController{
     {
         parent::__construct();
         $this->user = $this->getUserSessionData()['user'];
+        $this->role = $this->getUserSessionData()['role'];
         $this->persona = new PersonaModel();
         $this->asociado = new AsociadoModel();
         // $this->aporte = $this->model;
@@ -32,7 +34,30 @@ class Aporte extends SessionController{
             'persona' => $this->persona,
             'asociado' => $this->asociado,
             'aporte' => $this->aporte,
+            'role' => $this->role['name_role'],
         ]);
+    }
+
+    function renderPerId($param = null)
+    {
+        if(isset($param[0])){
+                        
+            $this->persona->get($this->user->getIdPersona());
+            $this->asociado->get((int) $param[0]);
+            $this->aporte = $this->model->get($this->asociado->getId());
+
+            // var_dump($this->role);
+            // die();
+            
+            $this->view->render('aportes/index', [
+                'user' => $this->user,
+                'persona' => $this->persona,
+                'asociado' => $this->asociado,
+                'aporte' => $this->aporte,
+                'role' => $this->role['name_role'],
+            ]);
+        }
+        
     }
 
     
@@ -41,17 +66,18 @@ class Aporte extends SessionController{
         if(isset($param[0])){
             $data = json_decode($param[0],true);
             
-            // var_dump($data['id']);
-            // die();
-
             $this->aporte = $this->model->getByOrder([
                 'field' => $this->transCampos($data['field']),
                 'sentido' => $data['sentido'],
-                'id_asociado' => $data['id'],
+                'id_asociado' => (int)$data['id'],
             ]);
             
-            var_dump($this->aporte);
-            die();
+            foreach($this->aporte as $row){
+                echo '<tr>';
+                    echo'<td>' . $row->getValorAporte() . '</td>';
+                    echo'<td>' . $row->getCreateTime() . '</td>';
+                echo'</tr>';
+            }
             
         }
         

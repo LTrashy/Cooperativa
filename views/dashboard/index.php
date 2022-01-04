@@ -58,7 +58,7 @@
                                         echo "Hubo un problema al cargar los datos";
                                     }else{?>
                                         <span class="" >
-                                            <?= date($aporte->getCreateTime())?>
+                                            <?= explode(" " ,$aporte->getCreateTime())[0]?>
                                         </span>
                             <?php   } ?>
                             </div>
@@ -83,6 +83,37 @@
                             </div>
                         </div>
                     </div>
+                    <div class="cards-container">
+                        <div class="card w-100">
+                            <div class="total-aportes">
+                                <span class="total-aportes-text">
+                                    Dividendos producidos
+                                </span>
+                            </div>
+                            <div class="total-value">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards-container">
+                        <div class="card w-100">
+                            <div class="total-aportes">
+                                <span class="total-aportes-text">
+                                    Fecha de ingreso 
+                                </span>
+                            </div>
+                            <div class="total-value">
+                            <?php
+                                    if($aporte->getCreateTime() === null){
+                                        echo "Hubo un problema al cargar los datos";
+                                    }else{?>
+                                        <span class="" >
+                                            <?= explode(" " ,$asociado->getCreateTime())[0]?>
+                                        </span>
+                            <?php   } ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="right-container">
@@ -92,6 +123,11 @@
                         <button class="btn-main" id="new-aporte">
                             <i class="material-icons">add</i>
                             <span>Registrar nuevo aporte</span>
+                        </button>
+                        
+                        <button class="btn-main" id="new-aporte">
+                            <i class="material-icons">add</i>
+                            <span>Reclamar dividendos</span>
                         </button>
 
                     </section>

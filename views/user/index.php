@@ -1,6 +1,7 @@
 <?php
     $user = $this->d['user'];
     $persona = $this->d['persona'];
+    $role = $this->d['role'];
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,16 @@
     <title>Coop - User</title>
 </head>
 <body>
-    <?php require 'views/dashboard/header.php'?>
+
+    <?php
+        
+        if($role == 'admin'){
+            require 'views/admin/header.php';
+        }else if($role == 'user'){
+            require 'views/dashboard/header.php';
+        }
+    ?>
+    
 
     <div id="main-container">
         <?php $this->showMessages();?>

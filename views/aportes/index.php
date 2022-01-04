@@ -4,6 +4,7 @@
     $persona = $this->d['persona'];
     $asociado = $this->d['asociado'];
     $aporte = $this->d['aporte'];
+    $role = $this->d['role'];
 
 ?>
 
@@ -18,7 +19,15 @@
     <title>Coop - Aporte</title>
 </head>
 <body>
-    <?php require 'views/dashboard/header.php'?>
+
+
+    <?php 
+        if($role == 'admin'){
+            require 'views/admin/header.php';
+        }else if($role == 'user'){
+            require 'views/dashboard/header.php';
+        }
+        ?>
     
 
     <div id="main-container">
@@ -33,8 +42,8 @@
             <table class="table" width="100%">
                 <thead>
                     <tr>
-                        <th id="valor" class="bOrdenar">Valor del aporte <i class="material-icons v">expand_more</i></th>
-                        <th id="fecha" class="bOrdenar">Fecha del aporte <i class="material-icons f">expand_more</i></th>
+                        <th id="valor" class="bOrdenar">Valor del aporte <i class="material-icons v">horizontal_rule</i></th>
+                        <th id="fecha" class="bOrdenar">Fecha del aporte <i class="material-icons f">horizontal_rule</i></th>
                     </tr>
                 </thead>
 
@@ -66,17 +75,21 @@
         userSelection[i].addEventListener("click", function() {
             // console.log("index: " + i );
             if(i == 0){
-                if(valor.textContent == 'expand_more'){
+                if(valor.textContent == 'horizontal_rule'){
                     valor.textContent = 'expand_less'
-                }else{
+                }else if(valor.textContent == 'expand_less'){
                     valor.textContent = 'expand_more'
+                }else{
+                    valor.textContent = 'horizontal_rule'
                 }
                 // console.log(valor.textContent= 'expand_less');
             }else if(i == 1){
-                if(fecha.textContent == 'expand_more'){
+                if(fecha.textContent == 'horizontal_rule'){
                     fecha.textContent = 'expand_less'
-                }else{
+                }else if(fecha.textContent == 'expand_less'){
                     fecha.textContent = 'expand_more'
+                }else{
+                    fecha.textContent = 'horizontal_rule'
                 }
             }
             ordenarPor(this.id);
@@ -92,11 +105,12 @@
             //console.log(data);
             xmlhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
-                    
+                    console.log(this.responseText);
                     document.getElementById("tbody-aportes").innerHTML = this.responseText;
                 }
             };
-            //console.log(id);
+            console.log(this.responseText);
+            console.log(data);
             xmlhttp.open("GET", "aporte/order/"+ JSON.stringify(data) , true);
             xmlhttp.send();
         }

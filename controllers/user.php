@@ -1,14 +1,19 @@
 <?php
 include_once 'models/personamodel.php';
+include_once 'models/relacionroleusermodel.php';
+
 class User extends SessionController{
     
     private $user;
     private $persona;
+    private $role;
+    
 
     function __construct()
     {
         parent::__construct();
         $this->user = $this->getUserSessionData()['user'];
+        $this->role = $this->getUserSessionData()['role'];
         $this->persona = new PersonaModel();
         error_log('User::construct -> inicio User');
     }
@@ -19,6 +24,7 @@ class User extends SessionController{
         $this->view->render('user/index', [
             'user' => $this->user,
             'persona' => $this->persona,
+            'role' => $this->role['name_role'],
         ]);
     }
 

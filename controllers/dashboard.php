@@ -23,11 +23,7 @@ class Dashboard extends SessionController{
     {
         $this->persona->get($this->user->getIdPersona());
         $this->asociado->getIdPer($this->user->getIdPersona());
-        // var_dump($this->asociado->getId());
-        // die();
         $this->aporte->getLast($this->asociado->getId());
-        // var_dump($this->aporte);
-        // die();
         
         $this->view->render('dashboard/index', [
             'user' => $this->user,
